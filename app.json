@@ -1,0 +1,17 @@
+{
+  "name": "payback-time-app",
+  "displayName": "payback-time-app",
+  "expo": {
+    "name": "payback-time-app",
+    "slug": "payback-time-app",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
