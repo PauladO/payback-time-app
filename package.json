@@ -54,6 +54,6 @@
       "<rootDir>/node_modules/"
     ],
     "cacheDirectory": ".jest/cache"
-  }
+  },
   "private": true
 }
