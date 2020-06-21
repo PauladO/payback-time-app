@@ -67,3 +67,6 @@ web-build/
 
 # Visual Studio
 .vscode
+
+# Firebase
+android/app/google-services.json
