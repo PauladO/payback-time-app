@@ -69,4 +69,4 @@ web-build/
 .vscode
 
 # Firebase
-android/app/google-services.json
+/android/app/google-services.json
