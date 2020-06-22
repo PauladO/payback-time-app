@@ -64,3 +64,9 @@ web-build/
 
 # Jest
 .jest/
+
+# Visual Studio
+.vscode
+
+# Firebase
+/android/app/google-services.json
