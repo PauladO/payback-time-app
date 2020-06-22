@@ -1,18 +1,35 @@
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
+import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { Platform, StyleSheet, Text, View } from 'react-native';
-
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
+import { Provider as PaperProvider } from 'react-native-paper';
+import LoginScreen from './authentication/LogIn/LogInScreen';
 
 export default function App() {
+
+  // Set an initializing state whilst Firebase connects
+  const [loading, setLoading] = useState<boolean>(true);
+  const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
+
+  useEffect(() => {
+    auth().onAuthStateChanged(userState => {
+      setUser(userState);
+
+      if (loading) {
+        setLoading(false);
+      }
+    });
+  }, []);
+
+  if (loading) return null;
+
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text>
-    </View>
+    <PaperProvider>
+      { !user && 
+        <Text>Login</Text>
+      }
+      <LoginScreen />
+    </PaperProvider>
   );
 }
 
