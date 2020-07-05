@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
+import { LoginStackParamList } from '../../navigation/NavigationService';
+import { StackNavigationProp } from '@react-navigation/stack';
+
+type LoginScreenNavigationProp = StackNavigationProp<
+  LoginStackParamList,
+  'Login'
+>;
+
+type Props = {
+  navigation: LoginScreenNavigationProp;
+};
 
 interface State {
   email: string
@@ -9,12 +20,9 @@ interface State {
   isLoading: boolean
 }
 
-interface Props {
-}
-
-export default class LogInContainer extends Component<Props, State> {
-  constructor() {
-    super({});
+export default class LogInScreen extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
 
     this.state = {
         email: '',
@@ -22,7 +30,6 @@ export default class LogInContainer extends Component<Props, State> {
         isLoading: false
     };
   }
-
 
   render() {
     return (
@@ -56,22 +63,13 @@ export default class LogInContainer extends Component<Props, State> {
         >
           {!this.state.isLoading && 'Login'}
         </Button>
-        {/* <Button
-          mode="contained"
-          accessibilityStates={null}
-          onPress={this._login}
-          disabled={this.state.isLoading}
-        >
-          {"Register"}
-        </Button> */}
-
         <Button
           mode='contained'
           accessibilityStates={null}
-          onPress={this._register}
-          loading={this.state.isLoading}
+          onPress={() => this.props.navigation.navigate('SignUp')}
+          disabled={this.state.isLoading}
         >
-          {!this.state.isLoading && 'Register'}
+          {'Sign up'}
         </Button>
 
         <Button
@@ -104,25 +102,6 @@ export default class LogInContainer extends Component<Props, State> {
           console.log('That email address is invalid!');
         }
         this.setState({isLoading: false});
-
-        console.error(error);
-      });
-  }
-
-  private _register = () => {
-    auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => {
-        console.log('User account created & signed in!', auth().currentUser);
-      })
-      .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
 
         console.error(error);
       });

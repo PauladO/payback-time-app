@@ -3,6 +3,8 @@ import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import LoginScreen from './authentication/LogIn/LogInScreen';
+import Navigator from './navigation/NavigationService';
+import 'react-native-gesture-handler';
 
 export default function App() {
 
@@ -22,14 +24,13 @@ export default function App() {
 
   if (loading) return null;
 
-
   return (
-    <PaperProvider>
-      { !user && 
-        <Text>Login</Text>
-      }
-      <LoginScreen />
-    </PaperProvider>
+      <PaperProvider>
+          { !user &&
+            <Text>Login</Text>
+          }
+          <Navigator />
+      </PaperProvider>
   );
 }
 
