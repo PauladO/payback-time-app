@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View } from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import auth from '@react-native-firebase/auth';
-import { LoginStackParamList } from '../../navigation/NavigationService';
+import { LoginStackParamList } from '../../navigation/Stacks';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 type LoginScreenNavigationProp = StackNavigationProp<

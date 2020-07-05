@@ -1,12 +1,9 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
 import LoginScreen from '../authentication/LogIn/LogInScreen';
 import SignUpScreen from '../authentication/SignUp/SignUpContainer';
-
-const RootStack = createStackNavigator<RootStackParamList>();
-const LoginStack = createStackNavigator<LoginStackParamList>();
+import { RootStack, LoginStack } from './Stacks';
 
 export default function Navigator() {
   return (
@@ -26,21 +23,3 @@ function LoginStackScreen() {
     </LoginStack.Navigator>
   );
 }
-
-export type RootStackParamList = {
-  Login: {
-    screen: LoginScreen,
-    navigationOptions: { header: null, gesturesEnabled: false }
-  }
-};
-
-export type LoginStackParamList = {
-  SignUp: {
-    screen: SignUpScreen,
-    navigationOptions: { header: null, gesturesEnabled: false }
-  },
-  Login: {
-    screen: LoginScreen,
-    navigationOptions: { header: null, gesturesEnabled: false }
-  }
-};
