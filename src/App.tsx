@@ -3,7 +3,7 @@ import auth, { FirebaseAuthTypes } from '@react-native-firebase/auth';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider } from 'react-native-paper';
 import LoginScreen from './authentication/LogIn/LogInScreen';
-import Navigator from './navigation/NavigationService';
+import Navigator from './navigation/Navigator';
 import 'react-native-gesture-handler';
 
 export default function App() {
